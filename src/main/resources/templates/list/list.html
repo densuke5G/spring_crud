@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
+
+<head>
+	<title>社員一覧 | 社員管理システム</title>
+	<meta charset="UTF-8" />
+</head>
+
+<body class="admin user_list">
+	<h3>社員一覧画面</h3>
+	<!-- セッション中にユーザ情報が存在する場合のみ以下の処理を実行する。 -->
+	<!-- なお、セッション中のユーザ情報がない（null）の場合、-->
+	<!-- フィルターの処理により、当該Thymeleaf処理完了後にログイン画面にリダイレクトする。 -->
+
+	<!-- ***管理者権限表示 trueを書き換えること*** -->
+	<th:block th:if="true">
+		<div class="regist_link">
+			<a th:href="@{/regist/input}">新規社員登録</a>
+		</div>
+	</th:block>
+	<!-- ***検索結果が０件の場合 falseを書き換え、表示内容を記述すること*** -->
+	<th:block th:if="${employees == 'Empty'}">
+		<h1>該当する社員は存在しません</h1>
+
+	</th:block>
+
+	<!-- ***検索結果がある場合 trueを書き換えること*** -->
+	<table class="list_table" th:unless="${employees == 'Empty'}" border="1">
+	<!-- <table class="list_table"> -->
+		<tr>
+			<th>社員ID</th>
+			<th>社員名</th>
+			<!-- ***管理者権限表示 trueを書き換えること*** -->
+			<th:block th:if="true">
+				<th class="gender">性別</th>
+				<th class="address">住所</th>
+				<th class="birthday">生年月日</th>
+				<th class="authority">権限</th>
+			</th:block>
+			<th class="deptName">部署名</th>
+			<th:block th:if="true">
+				<th class="button" colspan="2">操作</th>
+			</th:block>
+		</tr>
+
+		<!-- ***####を書き換え、社員情報を全件出力する*** -->
+		<tr th:each="employee: ${employees}">
+			<td th:text="${employee.empId}"></td>
+			<td th:text="${employee.empName}"></td>
+			<td th:if="${employee.gender == 1}" th:text="男性"></td>
+			<td th:if="${employee.gender == 2}" th:text="女性"></td>
+			<td th:text="${employee.address}"></td>
+			<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
+			<td th:if="${employee.authority == 1}" th:text="一般"></td>
+			<td th:if="${employee.authority == 2}" th:text="管理者"></td>
+			<td th:text="${employee.department.deptName}"></td>
+			<td>
+				<button>変更</button>
+			</td>
+			<td>
+				<button>削除</button>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
