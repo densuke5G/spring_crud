@@ -34,6 +34,11 @@ public class DepartmentEntity {
 		this.deptName = deptName;
 	}
 
+	public DepartmentEntity(DepartmentForm form) {
+		this.deptId = form.getDeptId();
+		this.deptName = form.getDeptName();
+	}
+
 	public Integer getDeptId() {
 		return deptId;
 	}

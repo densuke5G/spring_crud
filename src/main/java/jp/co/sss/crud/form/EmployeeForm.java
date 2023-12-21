@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import jp.co.sss.crud.entity.DepartmentEntity;
+import jp.co.sss.crud.entity.EmployeeEntity;
 
 public class EmployeeForm {
 	/** 性別の初期値(男性) */
@@ -45,15 +45,27 @@ public class EmployeeForm {
 	private Integer authority;
 
 	/** 部署ID */
-	private DepartmentEntity department;
-	
+	private Integer deptId;
+
 	/** 部署情報 */
 	private DepartmentForm departmentForm;
 
 	public EmployeeForm() {
 		gender = DEFAULT_MAN_GENDER;
-		authority=DEFAULT_NORMAL_AUTHORITY;
+		authority = DEFAULT_NORMAL_AUTHORITY;
 		departmentForm = new DepartmentForm(DEFAULT_EIGYO_DEPT_ID, "");
+	}
+
+	public EmployeeForm(EmployeeEntity entity) {
+		this.empId = entity.getEmpId();
+		this.empPass = entity.getEmpPass();
+		this.empName = entity.getEmpName();
+		this.gender = entity.getGender();
+		this.address = entity.getAddress();
+		this.birthday = entity.getBirthday();
+		this.authority = entity.getAuthority();
+		this.deptId = entity.getDepartment().getDeptId();
+		this.departmentForm = new DepartmentForm(entity.getDepartment().getDeptId(),entity.getDepartment().getDeptName());
 	}
 
 	public Integer getEmpId() {
@@ -120,13 +132,12 @@ public class EmployeeForm {
 		this.departmentForm = departmentForm;
 	}
 
-	public DepartmentEntity getDepartment() {
-		return department;
+	public Integer getDeptId() {
+		return deptId;
 	}
 
-	public void setDepartment(DepartmentEntity department) {
-		this.department = department;
+	public void setDeptId(Integer deptId) {
+		this.deptId = deptId;
 	}
-	
 
 }

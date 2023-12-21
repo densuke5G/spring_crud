@@ -47,7 +47,17 @@ public class EmployeeEntity {
 
 	public EmployeeEntity() {
 	}
-	
+
+	public EmployeeEntity(EmployeeForm form) {
+		this.empId = form.getEmpId();
+		this.empPass = form.getEmpPass();
+		this.empName = form.getEmpName();
+		this.gender = form.getGender();
+		this.address = form.getAddress();
+		this.birthday = form.getBirthday();
+		this.authority = form.getAuthority();
+		this.department = new DepartmentEntity(form.getDepartmentForm());
+	}
 
 	public EmployeeEntity(Integer empId) {
 		this.empId = empId;

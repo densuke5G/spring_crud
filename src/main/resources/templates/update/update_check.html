@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
 
 <head>
-	<title>会員登録確認 | シェアードショップ</title>
+	<title>会員変更確認 | シェアードショップ</title>
 	<meta charset="UTF-8" />
 </head>
 
-<body class="admin user_regist_check_admin">
-	<h3>社員登録確認画面</h3>
+<body class="admin user_update_check_admin">
+	<h3>社員変更確認画面</h3>
 	<div class="update">
 		<div class="form">
 			<div class="label">パスワード：</div>
@@ -48,15 +48,15 @@
 				<span th:case="3">総務部</span>
 			</div>
 		</div>
-		<form th:action="@{/regist/doRegistration}" method="post" th:object="${employeeForm}">
+		<form th:action="@{/update/doUpdate}" method="post" th:object="${employeeForm}">
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
-					<input type="submit" value="登録" />
+					<input type="submit" value="変更" />
 				</div>
 			</div>
 		</form>
-		<form th:action="@{/regist/input}" method="get" th:object="${employeeForm}">
+		<form th:action="@{/update/input/} + ${session.employee.empId}" method="get" th:object="${employeeForm}">
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">

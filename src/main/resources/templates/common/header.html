@@ -10,7 +10,7 @@
 		<div class="content">
 			<div class="title">社員管理システム</div>
 			<div th:if="${session.employees != null}" class="user_info">
-				ようこそ、<a th:href="@{/update/input/(empId=${session.employees.empId})}"><span
+				ようこそ、<a th:href="@{/update/input/} + ${session.employees.empId}"><span
 						th:text="${session.employees.empName}"></span></a>さん<span class="pipeline">|</span><a
 					th:href="@{/logout}">ログアウト</a>
 			</div>

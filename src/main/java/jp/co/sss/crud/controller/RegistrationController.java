@@ -3,7 +3,6 @@ package jp.co.sss.crud.controller;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +21,7 @@ import jp.co.sss.crud.repository.EmployeeRepository;
 public class RegistrationController {
 	
 	@Autowired
-	private EmployeeRepository employeeRepository;
+	private EmployeeRepository repository;
 	
 	@Autowired
 	private HttpSession session;
@@ -38,17 +37,15 @@ public class RegistrationController {
 		if (result.hasErrors()) {
 			return "regist/regist_input";
 		}
-		model.addAttribute("dept", form.getDepartment().getDeptId());
 		session.setAttribute("employee", form);
 		return "regist/regist_check";
 	}
 	
 	@RequestMapping(path = "/regist/doRegistration", method = RequestMethod.POST)
-	public String doRegistration() {
-		EmployeeEntity employeeEntity = new EmployeeEntity();
-//		employeeEntity = (EmployeeEntity)session.getAttribute("employee");
-		BeanUtils.copyProperties(session.getAttribute("employee"), employeeEntity);
-		employeeRepository.save(employeeEntity);
+	public String doRegistration(EmployeeForm form) {
+		form = (EmployeeForm)session.getAttribute("employee");
+		EmployeeEntity entity = new EmployeeEntity(form);
+		repository.save(entity);
 		
 		return "redirect:/regist/complete";
 	}

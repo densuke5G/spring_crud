@@ -55,10 +55,14 @@
 			<td th:if="${employee.authority == 2}" th:text="管理者"></td>
 			<td th:text="${employee.department.deptName}"></td>
 			<td>
-				<button>変更</button>
+			<form th:action="@{/update/input}">
+				<button name="empId" th:value="${employee.empId}">変更</button>
+			</form>
 			</td>
 			<td>
-				<button>削除</button>
+			<form th:action="@{/delete/check}">
+				<button name="empId" th:value="${employee.empId}">削除</button>
+			</form>
 			</td>
 		</tr>
 	</table>
