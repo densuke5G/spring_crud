@@ -3,18 +3,14 @@ package jp.co.sss.crud.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.entity.EmployeeEntity;
-import jp.co.sss.crud.form.EmployeeForm;
 import jp.co.sss.crud.repository.EmployeeRepository;
 
 @Controller
-@SessionAttributes(types = EmployeeForm.class)
 public class DeleteController {
 	
 	@Autowired
@@ -28,8 +24,8 @@ public class DeleteController {
 		return "delete/delete_check";
 	}
 	
-	@RequestMapping(path = "/delete/doDelete/{empId}", method = RequestMethod.POST)
-	public String doUpdate(@PathVariable Integer empId) {
+	@RequestMapping(path = "/delete/doDelete", method = RequestMethod.POST)
+	public String doUpdate(Integer empId) {
 		repository.deleteById(empId);
 		return "redirect:/delete/complete";
 	}

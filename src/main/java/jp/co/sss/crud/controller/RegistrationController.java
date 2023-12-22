@@ -10,14 +10,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jp.co.sss.crud.entity.EmployeeEntity;
 import jp.co.sss.crud.form.EmployeeForm;
 import jp.co.sss.crud.repository.EmployeeRepository;
 
 @Controller
-@SessionAttributes(types = EmployeeForm.class)
 public class RegistrationController {
 	
 	@Autowired
@@ -27,8 +25,7 @@ public class RegistrationController {
 	private HttpSession session;
 	
 	@RequestMapping(path = "/regist/input")
-	public String registInput(EmployeeForm form, Model model) {
-		model.addAttribute("employeeForm", form);
+	public String registInput(EmployeeForm form) {
 		return "regist/regist_input";
 	}
 	
@@ -54,5 +51,13 @@ public class RegistrationController {
 	public String registComplete() {
 		session.removeAttribute("employee");
 		return "regist/regist_complete";
+	}
+	
+	@RequestMapping(path = "/regist/doBack")
+	public String doBack(Model model) {
+		EmployeeForm form = (EmployeeForm)session.getAttribute("employee");
+		model.addAttribute("employeeForm", form);
+		session.removeAttribute("employee");
+		return "regist/regist_input";
 	}
 }

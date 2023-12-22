@@ -13,7 +13,7 @@
 	<!-- フィルターの処理により、当該Thymeleaf処理完了後にログイン画面にリダイレクトする。 -->
 
 	<!-- ***管理者権限表示 trueを書き換えること*** -->
-	<th:block th:if="true">
+	<th:block th:if="${session.employees.authority == 2}">
 		<div class="regist_link">
 			<a th:href="@{/regist/input}">新規社員登録</a>
 		</div>
@@ -31,39 +31,43 @@
 			<th>社員ID</th>
 			<th>社員名</th>
 			<!-- ***管理者権限表示 trueを書き換えること*** -->
-			<th:block th:if="true">
+			<th:block th:if="${session.employees.authority == 2}">
 				<th class="gender">性別</th>
 				<th class="address">住所</th>
 				<th class="birthday">生年月日</th>
 				<th class="authority">権限</th>
 			</th:block>
 			<th class="deptName">部署名</th>
-			<th:block th:if="true">
+			<th:block th:if="${session.employees.authority == 2}">
 				<th class="button" colspan="2">操作</th>
 			</th:block>
 		</tr>
 
 		<!-- ***####を書き換え、社員情報を全件出力する*** -->
 		<tr th:each="employee: ${employees}">
-			<td th:text="${employee.empId}"></td>
-			<td th:text="${employee.empName}"></td>
-			<td th:if="${employee.gender == 1}" th:text="男性"></td>
-			<td th:if="${employee.gender == 2}" th:text="女性"></td>
-			<td th:text="${employee.address}"></td>
-			<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
-			<td th:if="${employee.authority == 1}" th:text="一般"></td>
-			<td th:if="${employee.authority == 2}" th:text="管理者"></td>
+				<td th:text="${employee.empId}"></td>
+				<td th:text="${employee.empName}"></td>
+			<th:block th:if="${session.employees.authority == 2}">
+				<td th:if="${employee.gender == 1}" th:text="男性"></td>
+				<td th:if="${employee.gender == 2}" th:text="女性"></td>
+				<td th:text="${employee.address}"></td>
+				<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
+				<td th:if="${employee.authority == 1}" th:text="一般"></td>
+				<td th:if="${employee.authority == 2}" th:text="管理者"></td>
+			</th:block>
 			<td th:text="${employee.department.deptName}"></td>
-			<td>
-			<form th:action="@{/update/input}">
-				<button name="empId" th:value="${employee.empId}">変更</button>
-			</form>
-			</td>
-			<td>
-			<form th:action="@{/delete/check}">
-				<button name="empId" th:value="${employee.empId}">削除</button>
-			</form>
-			</td>
+			<th:block th:if="${session.employees.authority == 2}">
+				<td>
+					<form th:action="@{/update/input}">
+						<button name="empId" th:value="${employee.empId}">変更</button>
+					</form>
+				</td>
+				<td>
+					<form th:action="@{/delete/check}">
+						<button name="empId" th:value="${employee.empId}">削除</button>
+					</form>
+				</td>
+			</th:block>
 		</tr>
 	</table>
 </body>

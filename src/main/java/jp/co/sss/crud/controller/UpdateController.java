@@ -58,4 +58,12 @@ public class UpdateController {
 		session.removeAttribute("employee");
 		return "update/update_complete";
 	}
+	
+	@RequestMapping(path = "/update/doBack")
+	public String doBack(Model model) {
+		EmployeeForm form = (EmployeeForm) session.getAttribute("employee");
+		model.addAttribute("employeeForm", form);
+		session.removeAttribute("employee");
+		return "update/update_input";
+	}
 }

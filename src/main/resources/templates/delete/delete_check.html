@@ -48,11 +48,12 @@
 				<span th:case="3">総務部</span>
 			</div>
 		</div>
-		<form th:action="@{/delete/doDelete/} + ${employee.empId}" method="post">
+		<form th:action="@{/delete/doDelete/}" method="post">
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
-					<input type="submit" value="削除" />
+					<!-- <input type="submit" value="削除" /> -->
+					<button name="empId" th:value="*{employee.empId}">削除</button>
 				</div>
 			</div>
 		</form>

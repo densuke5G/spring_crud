@@ -48,7 +48,7 @@
 				<span th:case="3">総務部</span>
 			</div>
 		</div>
-		<form th:action="@{/regist/doRegistration}" method="post" th:object="${employeeForm}">
+		<form th:action="@{/regist/doRegistration}" method="post">
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 		</form>
-		<form th:action="@{/regist/input}" method="get" th:object="${employeeForm}">
+		<form th:action="@{/regist/doBack}" method="get">
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
