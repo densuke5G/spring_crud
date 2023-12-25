@@ -27,6 +27,8 @@ public class IndexController {
 
 	/**
 	 * ログイン画面表示
+	 * @param form	入力フォーム
+	 * @param model	入力チェック結果を格納
 	 * @return 遷移先(ログインHTML)
 	 */
 	@RequestMapping(path = "/", method = RequestMethod.GET)
@@ -37,10 +39,10 @@ public class IndexController {
 	}
 	
 	/**
-	 * 
-	 * @param form
-	 * @param result
-	 * @param session
+	 * ログイン処理
+	 * @param form	入力フォーム
+	 * @param result	入力チェック結果を格納
+	 * @param session	ユーザーデータを格納
 	 * @return
 	 */
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
@@ -63,6 +65,10 @@ public class IndexController {
 		}
 	}
 	
+	/**
+	 * ログアウト処理
+	 * @return	遷移先(ログインHTML)
+	 */
 	@RequestMapping(path = "/logout")
 	public String logout() {
 		return "redirect:/";

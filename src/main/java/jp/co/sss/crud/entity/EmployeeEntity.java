@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.form.DepartmentForm;
 import jp.co.sss.crud.form.EmployeeForm;
 
@@ -57,6 +58,17 @@ public class EmployeeEntity {
 		this.birthday = form.getBirthday();
 		this.authority = form.getAuthority();
 		this.department = new DepartmentEntity(form.getDepartmentForm());
+	}
+	
+	public EmployeeEntity(EmployeeBean bean) {
+		this.empId = bean.getEmpId();
+		this.empPass = bean.getEmpPass();
+		this.empName = bean.getEmpName();
+		this.gender = bean.getGender();
+		this.address = bean.getAddress();
+		this.birthday = bean.getBirthday();
+		this.authority = bean.getAuthority();
+		this.department = new DepartmentEntity(bean.getDeptId());
 	}
 
 	public EmployeeEntity(Integer empId) {

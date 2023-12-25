@@ -42,7 +42,7 @@
 		<div class="form">
 			<div class="label">部署名：</div>
 			
-			<div class="input" th:switch="${session.employee.departmentForm.deptId}">
+			<div class="input" th:switch="${session.employee.deptId}">
 				<span th:case="1">営業部</span>
 				<span th:case="2">経理部</span>
 				<span th:case="3">総務部</span>

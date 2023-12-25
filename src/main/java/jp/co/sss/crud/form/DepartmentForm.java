@@ -8,11 +8,15 @@ public class DepartmentForm {
 	public DepartmentForm() {
 	}
 
+	public DepartmentForm(Integer deptId) {
+		this.deptId = deptId;
+	}
+	
 	public DepartmentForm(Integer deptId, String deptName) {
 		this.deptId = deptId;
 		this.deptName = deptName;
 	}
-
+	
 	public Integer getDeptId() {
 		return deptId;
 	}

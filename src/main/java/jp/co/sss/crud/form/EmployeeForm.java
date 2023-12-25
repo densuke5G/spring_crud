@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.entity.EmployeeEntity;
 
 public class EmployeeForm {
@@ -66,6 +67,18 @@ public class EmployeeForm {
 		this.authority = entity.getAuthority();
 		this.deptId = entity.getDepartment().getDeptId();
 		this.departmentForm = new DepartmentForm(entity.getDepartment().getDeptId(),entity.getDepartment().getDeptName());
+	}
+	
+	public EmployeeForm(EmployeeBean bean) {
+		this.empId = bean.getEmpId();
+		this.empPass = bean.getEmpPass();
+		this.empName = bean.getEmpName();
+		this.gender = bean.getGender();
+		this.address = bean.getAddress();
+		this.birthday = bean.getBirthday();
+		this.authority = bean.getAuthority();
+		this.deptId = bean.getDeptId();
+		this.departmentForm = new DepartmentForm(bean.getDeptId());
 	}
 
 	public Integer getEmpId() {

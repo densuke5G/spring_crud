@@ -15,12 +15,23 @@ public class ListController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
+	/**
+	 * 社員一覧表示
+	 * @param model	社員データをリクエストスコープに送る
+	 * @return
+	 */
 	@RequestMapping(path = "/list")
 	public String list(Model model) {
 		model.addAttribute("employees", employeeRepository.findAllByOrderByEmpIdAsc());
 		return "list/list";
 	}
 	
+	/**
+	 * 社員名検索
+	 * @param empName	社員名（index.htmlにて入力）
+	 * @param model	リクエストスコープ（絞り込み結果）
+	 * @return
+	 */
 	@RequestMapping(path = "/list/empName")
 	public String listSearchName(String empName, Model model) {
 		if (empName != null && empName.length() > 0) {
@@ -39,6 +50,12 @@ public class ListController {
 		return "list/list";
 	}
 	
+	/**
+	 * 社員名検索
+	 * @param deptId	部署ID（index.htmlにて入力）
+	 * @param model	リクエストスコープ（絞り込み結果）
+	 * @return
+	 */
 	@RequestMapping(path = "/list/deptId")
 	public String listSearchdeptId(Integer deptId, Model model) {
 		List<EmployeeEntity> result = employeeRepository.findAllByDeptIdAscQuery(deptId);

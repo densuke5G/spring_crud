@@ -23,47 +23,66 @@ public class UpdateController {
 	private EmployeeRepository repository;
 
 	@Autowired
-	private HttpSession session;
-
+	HttpSession session;
+	
+	/**
+	 * 社員変更初期処理
+	 * @param empId	変更する社員IDの値
+	 * @param model	入力フォームをセットし、表示
+	 * @return	遷移先：（社員情報変更入力画面）
+	 */
 	@RequestMapping(path = "/update/input")
-	public String updateInput(Integer empId, EmployeeForm form, Model model) {
+	public String updateInput(Integer empId, Model model) {
 		EmployeeEntity entity = repository.getReferenceById(empId);
-		EmployeeBean bean = new EmployeeBean(entity);
-		model.addAttribute("employeeForm", bean);
+		EmployeeForm form = new EmployeeForm(entity);
+		model.addAttribute("employeeForm", form);
 		return "update/update_input";
 	}
-
+	
+	/**
+	 * 社員変更確認処理
+	 * @param form	入力フォーム
+	 * @param result	バリデーション結果を格納する
+	 * @return	遷移先：（社員情報変更確認画面）
+	 */
 	@RequestMapping(path = "/update/check", method = RequestMethod.POST)
 	public String updateCheck(@Valid @ModelAttribute EmployeeForm form, BindingResult result) {
 		if (result.hasErrors()) {
-			session.setAttribute("employee", form);
+			EmployeeBean bean = new EmployeeBean(form);
+			session.setAttribute("employee", bean);
 			return "update/update_input";
 		}
-		form.getDepartmentForm().setDeptId(form.getDeptId());
-		session.setAttribute("employee", form);
+		EmployeeBean bean = new EmployeeBean(form);
+		session.setAttribute("employee", bean);
 		return "update/update_check";
 	}
-
+	
+	/**
+	 * 社員登録処理
+	 * @return	遷移先：（社員変更完了画面）
+	 */
 	@RequestMapping(path = "/update/doUpdate", method = RequestMethod.POST)
-	public String doUpdate(EmployeeForm form) {
-		form = (EmployeeForm) session.getAttribute("employee");
-		EmployeeEntity entity = new EmployeeEntity(form);
+	public String doUpdate() {
+		EmployeeBean bean = (EmployeeBean) session.getAttribute("employee");
+		EmployeeEntity entity = new EmployeeEntity(bean);
 		repository.save(entity);
-
-		return "redirect:/update/complete";
-	}
-
-	@RequestMapping(path = "/update/complete")
-	public String updateComplete() {
 		session.removeAttribute("employee");
 		return "update/update_complete";
 	}
 	
+	/**
+	 * 入力画面に戻る処理
+	 * @param model	セッション情報をフォームに表示させる
+	 * @return	遷移先：（社員情報変更入力画面）
+	 */
 	@RequestMapping(path = "/update/doBack")
 	public String doBack(Model model) {
-		EmployeeForm form = (EmployeeForm) session.getAttribute("employee");
-		model.addAttribute("employeeForm", form);
-		session.removeAttribute("employee");
+		EmployeeBean bean = (EmployeeBean) session.getAttribute("employee");
+		if (bean != null) {
+			EmployeeForm form = new EmployeeForm(bean);
+			model.addAttribute("employeeForm", form);
+			session.removeAttribute("employee");
+		}
 		return "update/update_input";
 	}
 }

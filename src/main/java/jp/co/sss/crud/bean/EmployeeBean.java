@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import jp.co.sss.crud.entity.EmployeeEntity;
+import jp.co.sss.crud.form.EmployeeForm;
 
 public class EmployeeBean implements Serializable {
 	private Integer empId;
@@ -39,6 +40,21 @@ public class EmployeeBean implements Serializable {
 		this.birthday = entity.getBirthday();
 		this.authority = entity.getAuthority();
 		this.deptId = entity.getDepartment().getDeptId();
+	}
+	
+	/**
+	 * 引数formの内容で初期化
+	 * @param form コピー元のFormオブジェクト
+	 */
+	public EmployeeBean(EmployeeForm form) {
+		this.empId = form.getEmpId();
+		this.empPass = form.getEmpPass();
+		this.empName = form.getEmpName();
+		this.gender = form.getGender();
+		this.address = form.getAddress();
+		this.birthday = form.getBirthday();
+		this.authority = form.getAuthority();
+		this.deptId = form.getDepartmentForm().getDeptId();
 	}
 
 	public Integer getEmpId() {

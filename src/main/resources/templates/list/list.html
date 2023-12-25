@@ -12,25 +12,20 @@
 	<!-- なお、セッション中のユーザ情報がない（null）の場合、-->
 	<!-- フィルターの処理により、当該Thymeleaf処理完了後にログイン画面にリダイレクトする。 -->
 
-	<!-- ***管理者権限表示 trueを書き換えること*** -->
 	<th:block th:if="${session.employees.authority == 2}">
 		<div class="regist_link">
 			<a th:href="@{/regist/input}">新規社員登録</a>
 		</div>
 	</th:block>
-	<!-- ***検索結果が０件の場合 falseを書き換え、表示内容を記述すること*** -->
 	<th:block th:if="${employees == 'Empty'}">
 		<h1>該当する社員は存在しません</h1>
 
 	</th:block>
 
-	<!-- ***検索結果がある場合 trueを書き換えること*** -->
 	<table class="list_table" th:unless="${employees == 'Empty'}" border="1">
-	<!-- <table class="list_table"> -->
 		<tr>
 			<th>社員ID</th>
 			<th>社員名</th>
-			<!-- ***管理者権限表示 trueを書き換えること*** -->
 			<th:block th:if="${session.employees.authority == 2}">
 				<th class="gender">性別</th>
 				<th class="address">住所</th>
@@ -43,7 +38,6 @@
 			</th:block>
 		</tr>
 
-		<!-- ***####を書き換え、社員情報を全件出力する*** -->
 		<tr th:each="employee: ${employees}">
 				<td th:text="${employee.empId}"></td>
 				<td th:text="${employee.empName}"></td>
