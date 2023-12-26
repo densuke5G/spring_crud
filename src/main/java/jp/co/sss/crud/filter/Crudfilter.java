@@ -18,7 +18,7 @@ public class Crudfilter extends HttpFilter {
 			throws IOException, ServletException {
 		HttpSession session = request.getSession();
 		EmployeeBean employee = (EmployeeBean)session.getAttribute("employees");
-		if (employee.getAuthority() == 1) {
+		if (employee.getAuthority() != 2) {
 			response.sendRedirect("/spring_crud/");
 		} else {
 			chain.doFilter(request, response);

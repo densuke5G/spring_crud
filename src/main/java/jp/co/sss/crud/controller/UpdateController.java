@@ -48,8 +48,6 @@ public class UpdateController {
 	@RequestMapping(path = "/update/check", method = RequestMethod.POST)
 	public String updateCheck(@Valid @ModelAttribute EmployeeForm form, BindingResult result) {
 		if (result.hasErrors()) {
-			EmployeeBean bean = new EmployeeBean(form);
-			session.setAttribute("employee", bean);
 			return "update/update_input";
 		}
 		EmployeeBean bean = new EmployeeBean(form);
@@ -58,7 +56,7 @@ public class UpdateController {
 	}
 	
 	/**
-	 * 社員登録処理
+	 * 社員変更処理
 	 * @return	遷移先：（社員変更完了画面）
 	 */
 	@RequestMapping(path = "/update/doUpdate", method = RequestMethod.POST)
@@ -66,6 +64,7 @@ public class UpdateController {
 		EmployeeBean bean = (EmployeeBean) session.getAttribute("employee");
 		EmployeeEntity entity = new EmployeeEntity(bean);
 		repository.save(entity);
+		session.setAttribute("employees", bean);
 		session.removeAttribute("employee");
 		return "update/update_complete";
 	}

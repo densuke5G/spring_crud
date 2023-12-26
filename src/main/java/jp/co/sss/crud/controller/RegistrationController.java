@@ -31,7 +31,7 @@ public class RegistrationController {
 	 * @return	遷移先：（社員情報入力画面）
 	 */
 	@RequestMapping(path = "/regist/input")
-	public String registInput(@ModelAttribute EmployeeForm form) {
+	public String registInput(EmployeeForm form) {
 		return "regist/regist_input";
 	}
 	
