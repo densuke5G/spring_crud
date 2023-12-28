@@ -18,11 +18,12 @@
 		</div>
 	</th:block>
 	<th:block th:if="${employees == 'Empty'}">
-		<h1>該当する社員は存在しません</h1>
-
+		<p class="back_to_top_message">該当する社員は存在しません。</p>		
+		<a class="back_to_top_link" th:href="@{/list}">一覧表示に戻る</a>
+		
 	</th:block>
 
-	<table class="list_table" th:unless="${employees == 'Empty'}" border="1">
+	<table class="emp_list_table" th:unless="${employees == 'Empty'}" border="1">
 		<tr>
 			<th>社員ID</th>
 			<th>社員名</th>

@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
 
 <head>
-	<title>会員登録入力 | シェアードショップ</title>
+	<title>社員変更完了 | 社員管理システム</title>
 	<meta charset="UTF-8" />
 </head>
 
 <body class="admin user_regist_input_admin">
 	<h3>社員登録入力画面</h3>
-	<div class="regist">
+	<div class="update">
 		<form th:action="@{/regist/check}" method="post" th:object="${employeeForm}">
 			<!-- エラーメッセージの出力 -->
 			<p>

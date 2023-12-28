@@ -48,7 +48,7 @@ public class SearchEmpNameTest {
 
 	private void doLogin() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 

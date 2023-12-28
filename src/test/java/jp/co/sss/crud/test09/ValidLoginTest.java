@@ -50,7 +50,7 @@ public class ValidLoginTest {
 	@Order(1)
 	public void 異常系_ログイン操作_社員ID_空文字入力メッセージ出力() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		// 最大5秒間、ページが完全に読み込まれるまで待つ
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
@@ -89,7 +89,7 @@ public class ValidLoginTest {
 	@Order(2)
 	public void 異常系_ログイン操作_社員ID_桁数オーバー入力メッセージ出力() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		// 最大5秒間、ページが完全に読み込まれるまで待つ
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
@@ -129,7 +129,7 @@ public class ValidLoginTest {
 	@Order(3)
 	public void 異常系_ログイン操作_社員ID_文字種エラー1入力メッセージ出力() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		// 最大5秒間、ページが完全に読み込まれるまで待つ
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
@@ -169,7 +169,7 @@ public class ValidLoginTest {
 	@Order(4)
 	public void 異常系_ログイン操作_社員ID_文字種エラー2入力メッセージ出力() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		// 最大5秒間、ページが完全に読み込まれるまで待つ
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
@@ -209,7 +209,7 @@ public class ValidLoginTest {
 	@Order(5)
 	public void 異常系_ログイン操作_パスワード_空文字入力メッセージ出力() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		// 最大5秒間、ページが完全に読み込まれるまで待つ
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
@@ -248,7 +248,7 @@ public class ValidLoginTest {
 	@Order(6)
 	public void 異常系_ログイン操作_ログインエラーメッセージ出力() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		// 最大5秒間、ページが完全に読み込まれるまで待つ
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);

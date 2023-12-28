@@ -49,7 +49,7 @@ public class DeleteEmployeeTest {
 
 	private void doLogin() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -74,11 +74,12 @@ public class DeleteEmployeeTest {
 		doLogin();
 
 		/*****社員一覧から確認画面へ*****/
-		WebElement buttonUpdate = webDriver
-//				.findElement(By.cssSelector("table tr:nth-of-type(4) td:nth-of-type(9) input[type='submit']"));
-				.findElement(By.cssSelector("table tr:nth-of-type(4) td:nth-of-type(9) button"));
-		buttonUpdate.submit();
-
+//		WebElement buttonUpdate = webDriver
+//				.findElement(By.cssSelector("table tr:nth-of-type(4) td:nth-of-type(9) button"));
+//		buttonUpdate.submit();
+		List<WebElement> buttons = webDriver.findElements(By.tagName("button"));
+		buttons.get(6).click();
+		
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
 		// スクリーンショット
@@ -108,7 +109,9 @@ public class DeleteEmployeeTest {
 		assertEquals("経理部", checkDeptNameElement.getText());
 
 		/*****社員削除確認から完了画面へ*****/
-		webDriver.findElement(By.cssSelector(".update .input input[value='削除']")).submit();
+//		webDriver.findElement(By.cssSelector(".update .input input[value='削除']")).submit();
+		List<WebElement> buttons2 = webDriver.findElements(By.tagName("button"));
+		buttons2.get(1).click();
 
 		// スクリーンショット
 		File tempFileComplete = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
@@ -157,10 +160,11 @@ public class DeleteEmployeeTest {
 		doLogin();
 
 		/*****社員一覧から確認画面へ*****/
-		WebElement buttonUpdate = webDriver
+//		WebElement buttonUpdate = webDriver
 //				.findElement(By.cssSelector("table tr:nth-of-type(2) td:nth-of-type(9) input[type='submit']"));
-				.findElement(By.cssSelector("table tr:nth-of-type(2) td:nth-of-type(9) button"));
-		buttonUpdate.submit();
+//		buttonUpdate.submit();
+		List<WebElement> buttons = webDriver.findElements(By.tagName("button"));
+		buttons.get(2).click();
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 

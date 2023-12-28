@@ -50,7 +50,7 @@ public class LogoutTest {
 	@Order(1)
 	public void 正常系_ログアウト操作() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -82,7 +82,7 @@ public class LogoutTest {
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
 		// 検証
-		assertEquals("http://localhost:7779/spring_crud/", webDriver.getCurrentUrl());
+		assertEquals("http://localhost:9999/spring_crud/", webDriver.getCurrentUrl());
 
 	}
 

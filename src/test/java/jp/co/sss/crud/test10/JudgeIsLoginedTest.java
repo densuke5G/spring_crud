@@ -47,7 +47,7 @@ public class JudgeIsLoginedTest {
 
 	private void doLogin() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -79,7 +79,7 @@ public class JudgeIsLoginedTest {
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
-		String path = "http://localhost:7779/spring_crud/regist/input";//URLが違う場合、書き換えてください
+		String path = "http://localhost:9999/spring_crud/regist/input";//URLが違う場合、書き換えてください
 
 		webDriver.get(path);
 
@@ -94,7 +94,7 @@ public class JudgeIsLoginedTest {
 			e.printStackTrace();
 		}
 
-		assertEquals("http://localhost:7779/spring_crud/", webDriver.getCurrentUrl());
+		assertEquals("http://localhost:9999/spring_crud/", webDriver.getCurrentUrl());
 
 	}
 
@@ -110,7 +110,7 @@ public class JudgeIsLoginedTest {
 //		webDriver = new ChromeDriver();
 
 		//社員登録入力のURLが違う場合、書き換えてください
-		String path = "http://localhost:7779/spring_crud/regist/input";
+		String path = "http://localhost:9999/spring_crud/regist/input";
 
 		webDriver.get(path);
 
@@ -125,7 +125,7 @@ public class JudgeIsLoginedTest {
 			e.printStackTrace();
 		}
 
-		assertEquals("http://localhost:7779/spring_crud/", webDriver.getCurrentUrl());
+		assertEquals("http://localhost:9999/spring_crud/", webDriver.getCurrentUrl());
 	}
 
 }

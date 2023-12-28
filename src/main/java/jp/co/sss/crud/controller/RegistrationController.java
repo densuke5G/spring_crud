@@ -37,7 +37,7 @@ public class RegistrationController {
 	
 	/**
 	 * 社員登録確認処理
-	 * @param form	入力フォーム
+	 * @param form	入力フォーム(リクエストスコープ)
 	 * @param result	バリデーション結果を格納する
 	 * @return	遷移先：（社員情報確認画面）
 	 */

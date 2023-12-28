@@ -3,12 +3,12 @@
 	th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
 
 <head>
-<title>会員更新入力 | シェアードショップ</title>
+<title>社員変更入力 | 社員管理システム</title>
 <meta charset="UTF-8" />
 </head>
 
 <body class="admin user_update_input_admin">
-	<h3>社員更新入力画面</h3>
+	<h3>社員変更入力画面</h3>
 	<div class="update">
 		<form th:action="@{/update/check}" method="post" th:object="${employeeForm}">
 			<!-- エラーメッセージの出力 -->
@@ -49,7 +49,7 @@
 					<input type="text" th:field="*{birthday}" /> (YYYY/MM/DD)
 				</div>
 			</div>
-			<th:block th:if="*{authority == 2}">
+			<th:block th:if="${session.employees.authority == 2}">
 				<div class="form">
 					<div class="label">権限：</div>
 					<div class="input">
@@ -71,7 +71,7 @@
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
-					<button name="empId" th:value="*{empId}">更新</button>
+					<button name="empId" th:value="*{empId}">変更</button>
 				</div>
 			</div>
 		</form>

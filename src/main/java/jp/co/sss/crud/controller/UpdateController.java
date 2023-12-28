@@ -41,7 +41,7 @@ public class UpdateController {
 	
 	/**
 	 * 社員変更確認処理
-	 * @param form	入力フォーム
+	 * @param form	入力フォーム(リクエストスコープ)
 	 * @param result	バリデーション結果を格納する
 	 * @return	遷移先：（社員情報変更確認画面）
 	 */
@@ -61,11 +61,15 @@ public class UpdateController {
 	 */
 	@RequestMapping(path = "/update/doUpdate", method = RequestMethod.POST)
 	public String doUpdate() {
+		EmployeeBean userBean = (EmployeeBean) session.getAttribute("employees");
 		EmployeeBean bean = (EmployeeBean) session.getAttribute("employee");
 		EmployeeEntity entity = new EmployeeEntity(bean);
 		repository.save(entity);
-		session.setAttribute("employees", bean);
 		session.removeAttribute("employee");
+//		更新対象がログインユーザーと同じなら、ログイン情報も更新
+		if (userBean.getEmpId() == bean.getEmpId()) {
+			session.setAttribute("employees", bean);
+		}
 		return "update/update_complete";
 	}
 	

@@ -49,7 +49,7 @@ public class LoginTest {
 	@Order(1)
 	public void 正常系_ログイン操作_画面遷移_一般権限() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -86,7 +86,7 @@ public class LoginTest {
 	@Order(2)
 	public void 正常系_ログイン操作_画面遷移_管理者権限() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -124,7 +124,7 @@ public class LoginTest {
 	//	@Order(3)
 	//	public void 異常系_ログイン操作_ログインエラーメッセージ出力() {
 	//		// 指定したURLに遷移する
-	//		webDriver.get("http://localhost:7779/spring_crud/");
+	//		webDriver.get("http://localhost:9999/spring_crud/");
 	//
 	//		// 最大5秒間、ページが完全に読み込まれるまで待つ
 	//		webDriver.manage().timeouts().pageLoadTimeout(5,TimeUnit.SECONDS);

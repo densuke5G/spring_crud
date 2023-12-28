@@ -13,7 +13,9 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,7 +49,9 @@ public class IndexTest {
 	@Test
 	public void 正常系_ログイン画面表示_タイトル() {
 		// 指定したURLに遷移する
-		webDriver.get("http://localhost:7779/spring_crud/");
+		webDriver.manage().window().setPosition(new Point(1680, 40));
+		webDriver.manage().window().setSize(new Dimension(1400, 900));
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		// 最大5秒間待つ
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);

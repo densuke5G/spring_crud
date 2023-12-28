@@ -15,9 +15,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,9 +49,9 @@ public class UpdateEmployeeTest {
 
 	private void doLogin() {
 		// 指定したURLに遷移する
-		webDriver.manage().window().setPosition(new Point(1680, 40));
-		webDriver.manage().window().setSize(new Dimension(1400, 900));
-		webDriver.get("http://localhost:7779/spring_crud/");
+//		webDriver.manage().window().setPosition(new Point(1680, 40));
+//		webDriver.manage().window().setSize(new Dimension(1400, 900));
+		webDriver.get("http://localhost:9999/spring_crud/");
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -79,7 +77,7 @@ public class UpdateEmployeeTest {
 
 		/*****社員一覧から入力画面へ*****/
 		List<WebElement> buttons = webDriver.findElements(By.tagName("button"));
-		buttons.get(0).click();
+		buttons.get(1).click();
 //		WebElement buttonUpdate = webDriver
 //				.findElement(By.cssSelector("table tr:nth-of-type(2) td:nth-of-type(8) input[type='submit']"));
 //		buttonUpdate.submit();
@@ -126,7 +124,7 @@ public class UpdateEmployeeTest {
 
 //		webDriver.findElement(By.cssSelector("input[value='変更']")).submit();
 		List<WebElement> buttons2 = webDriver.findElements(By.tagName("button"));
-		buttons2.get(0).click();
+		buttons2.get(1).click();
 
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
@@ -148,7 +146,9 @@ public class UpdateEmployeeTest {
 		assertEquals("山田太郎", checkEmpNameElement.getText());
 
 		/*****社員確認から完了画面へ*****/
-		webDriver.findElement(By.cssSelector(".update .input input[value='変更']")).submit();
+//		webDriver.findElement(By.cssSelector(".update .input input[value='変更']")).submit();
+		List<WebElement> buttons3 = webDriver.findElements(By.tagName("button"));
+		buttons3.get(1).click();
 
 		// スクリーンショット
 		File tempFileComplete = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
@@ -185,9 +185,11 @@ public class UpdateEmployeeTest {
 		doLogin();
 
 		/*****社員一覧から入力画面へ*****/
-		WebElement buttonUpdate = webDriver
-				.findElement(By.cssSelector("table tr:nth-of-type(2) td:nth-of-type(8) input[type='submit']"));
-		buttonUpdate.submit();
+//		WebElement buttonUpdate = webDriver
+//				.findElement(By.cssSelector("table tr:nth-of-type(2) td:nth-of-type(8) input[type='submit']"));
+//		buttonUpdate.submit();
+		List<WebElement> buttons = webDriver.findElements(By.tagName("button"));
+		buttons.get(1).click();
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -214,9 +216,11 @@ public class UpdateEmployeeTest {
 
 		doLogin();
 		/*****社員一覧から入力画面へ*****/
-		WebElement buttonUpdate = webDriver
-				.findElement(By.cssSelector("table tr:nth-of-type(2) td:nth-of-type(8) input[type='submit']"));
-		buttonUpdate.submit();
+//		WebElement buttonUpdate = webDriver
+//				.findElement(By.cssSelector("table tr:nth-of-type(2) td:nth-of-type(8) input[type='submit']"));
+//		buttonUpdate.submit();
+		List<WebElement> buttons = webDriver.findElements(By.tagName("button"));
+		buttons.get(1).click();
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -237,7 +241,9 @@ public class UpdateEmployeeTest {
 		inputedEmpNameElement.clear();
 		inputedEmpNameElement.sendKeys("山田太郎");
 
-		webDriver.findElement(By.cssSelector("input[value='変更']")).submit();
+//		webDriver.findElement(By.cssSelector("input[value='変更']")).submit();
+		List<WebElement> buttons2 = webDriver.findElements(By.tagName("button"));
+		buttons2.get(1).click();
 
 		webDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
@@ -251,7 +257,9 @@ public class UpdateEmployeeTest {
 		}
 
 		/*****社員確認から入力画面へ*****/
-		webDriver.findElement(By.cssSelector(".update .input input[value='戻る']")).submit();
+//		webDriver.findElement(By.cssSelector(".update .input input[value='戻る']")).submit();
+		List<WebElement> buttons4 = webDriver.findElements(By.tagName("button"));
+		buttons4.get(2).click();
 
 		// スクリーンショット
 		File tempFileInput2 = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
